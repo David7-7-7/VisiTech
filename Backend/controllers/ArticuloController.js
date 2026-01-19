@@ -1,15 +1,19 @@
-import { Articulo } from '../models/Articulo.js';
 import { validarArticulo,validarParcial } from '../helpers/zod.js';
 
 export class ArticuloController{
-    static async getAll(request,response){
-        response.json(await Articulo.getAll());
+
+    constructor(modelo){
+    this.modelo = modelo;
     }
 
-    static async getOneBiID(request,response){
+    getAll = async(request,response) => {
+        response.json(await this.modelo.getAll());
+    }
+
+    getOneBiID = async(request,response) => {
         const id= Number(request.params.id);
 
-        const articulo = await Articulo.getOneBiID(id);
+        const articulo = await this.modelo.getOneBiID(id);
 
         if(articulo){
             response.json(articulo);
@@ -18,9 +22,9 @@ export class ArticuloController{
         }
     }
 
-    static async delete(request, response){
+    delete = async(request, response) => {
         const id= Number(request.params.id);
-        const articulosDevolver = await Articulo.delete(id);
+        const articulosDevolver = await this.modelo.delete(id);
 
         if(articulosDevolver){
             response.json(articulosDevolver);
@@ -29,24 +33,24 @@ export class ArticuloController{
         }
     }
 
-    static async create(request,response){
+    create = async(request,response) => {
         const articulo = validarArticulo(request.body);
 
         if (articulo.error){
             return response.status(400).json('Validación incorrecta')
         }
 
-        const nuevoArticulo = await Articulo.create(articulo);
+        const nuevoArticulo = await this.modelo.create(articulo);
 
         response.json(nuevoArticulo); //solo se muestra el nuevo dato
         //response.json(articulosDevolver);
     }
 
-    static async update(request,response){
+    update = async(request,response) => {
         const id= Number(request.params.id);
         const articuloValidado = validarParcial(request.body);
 
-        const nuevoArticulo =await  Articulo.update(id,articuloValidado);
+        const nuevoArticulo =await  this.modelo.update(id,articuloValidado);
 
         response.json(nuevoArticulo);
     }
