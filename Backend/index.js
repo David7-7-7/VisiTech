@@ -1,5 +1,8 @@
 import express, { response } from "express";
-import { articuloRouter } from "./Routes/articulosRoutes.js";
+import { Enrutador } from "./Routes/articulosRoutes.js";
+import { CreadorUsuarios } from "./Routes/usuariosRoutes.js";
+import { Articulo } from "./models/Articulo.js";
+import { Usuario } from "./models/Usuario.js";
 
 const app = express();
 
@@ -11,7 +14,8 @@ app.use(express.json());
 //puerto por el que estara escuchando
 const PORT = 1234;
 
-app.use('/api/articulos',articuloRouter);
+app.use('/api/articulos',Enrutador(Articulo));
+app.use('/api/usuarios',CreadorUsuarios(Usuario));
 
 app.listen(PORT, () =>{
     console.log("Servidor a la espera");

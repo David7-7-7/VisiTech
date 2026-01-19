@@ -7,15 +7,15 @@ const controlador = new ArticuloController(modelo); // Creamos la instancia de A
 
 const articuloRouter = Router();
 
-articuloRouter.get('/',ArticuloController.getAll)
+articuloRouter.get('/', controlador.getAll)
 
-articuloRouter.get('/:id',ArticuloController.getOneBiID)
+articuloRouter.get('/:id', controlador.getOneBiID)
 
-articuloRouter.delete('/:id',ArticuloController.delete)
+articuloRouter.delete('/:id', controlador.delete)
 
-articuloRouter.post('/',ArticuloController.create)
+articuloRouter.post('/', controlador.create)
 
-articuloRouter.put('/:id',ArticuloController.update)
+articuloRouter.put('/:id', controlador.update)
 
 return articuloRouter;
 
