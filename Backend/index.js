@@ -3,6 +3,7 @@ import { Enrutador } from "./Routes/articulosRoutes.js";
 import { CreadorUsuarios } from "./Routes/usuariosRoutes.js";
 import { Articulo } from "./models/Articulo.js";
 import { Usuario } from "./models/Usuario.js";
+import {auth} from "./middlewares/auth.js";
 
 const app = express();
 
@@ -14,8 +15,10 @@ app.use(express.json());
 //puerto por el que estara escuchando
 const PORT = 1234;
 
-app.use('/api/articulos',Enrutador(Articulo));
+app.use('/api/articulos' ,auth,Enrutador(Articulo));
 app.use('/api/usuarios',CreadorUsuarios(Usuario));
+
+// Comprobamos si tiene token, si no es asi o esta expirado no dejara entrar
 
 app.listen(PORT, () =>{
     console.log("Servidor a la espera");

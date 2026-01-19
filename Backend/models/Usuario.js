@@ -1,5 +1,6 @@
 import { usuarios } from "../datos/usuarios.js";
 import bcrypt from 'bcrypt';
+import {crearToken} from "../helpers/jwt_users.js";
 
 let usuariosDevolver = usuarios;
 
@@ -34,15 +35,17 @@ export class Usuario{
         if(!usuarioRegistrado )
             return "No existe el usuario";
 
-        let pwd = usuarioRecibido.password.localeCompare(usuarioRegistrado.password);
+        let pwd = await bcrypt.compare(usuarioRecibido.password,usuarioRegistrado.password);
 
-        if(pwd !=0)
+        if(!pwd)
             return "Fallo de autenticacion";
+
+        const token = crearToken(usuarioRegistrado);
 
         const usuarioFormateado = {
             nick: usuarioRegistrado.nick,
             mail: usuarioRegistrado.mail,
-            token: "token"
+            token: token
         }
 
         return usuarioFormateado;

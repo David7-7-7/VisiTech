@@ -8,7 +8,8 @@ export var usuarios=[
     {
         id:2,
         nick: "Leidy",
-        password: " ajshdjshajdasdjas"
+        password: "hola",
+        mail: "leidy@gmail.com"
     },
     {
         id:3,
