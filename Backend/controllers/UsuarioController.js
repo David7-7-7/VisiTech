@@ -1,3 +1,4 @@
+import { response } from "express";
 import { validarUsuario } from "../helpers/zodUsers.js";
 
 export class UsuarioController{
@@ -16,5 +17,18 @@ export class UsuarioController{
         }
 
         response.json(nuevoUsuario);
+    }
+
+    login = async(request, response)=>{
+
+        const datosAuth = request.body;
+
+        const usuario= await this.modelo.login(datosAuth);
+
+        if(usuario){
+            response.json(usuario)
+        }else{
+            response.status(400).end();
+        }
     }
 }
