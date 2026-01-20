@@ -6,13 +6,13 @@ let usuariosDevolver = usuarios;
 
 export class Usuario{
 
-    static register = async(usuarios) => {
-        if(!usuarios.success){
+    static register = async(usuario) => {
+        if(!usuario.success){
             return Error;
         }
 
         const nuevoUsuario ={
-            ...usuarios.data
+            ...usuario.data
         }
         
         if(usuariosDevolver.find(usuario => usuario.nick === nuevoUsuario.nick) || 
@@ -27,10 +27,10 @@ export class Usuario{
         return nuevoUsuario
     }
 
-    static login = async(usuarios) => {
-        let usuarioRecibido = usuarios;
+    static login = async(usuario) => {
+        let usuarioRecibido = usuario;
 
-        let usuarioRegistrado = usuariosDevolver.find((usuarios) => usuarios.nick == usuarioRecibido.nick);
+        let usuarioRegistrado = usuariosDevolver.find((usuario) => usuario.nick == usuarioRecibido.nick);
 
         if(!usuarioRegistrado )
             return "No existe el usuario";

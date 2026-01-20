@@ -1,14 +1,14 @@
 import jwt from 'jwt-simple';
 import 'dotenv/config';
 
-const caducidad= 1000 * 30;
- export const crearToken =(usuarios) =>{
+const caducidad= 1000 * 30 * 60;
+ export const crearToken =(usuario) =>{
 
     const payload={
-        id: usuarios.id,
-        nick: usuarios.nick,
-        mail: usuarios.mail,
-        exp: Date.now()+ caducidad
+        id: usuario.id,
+        nick: usuario.nick,
+        mail: usuario.mail,
+        exp: Date.now() + caducidad
     }
     return jwt.encode(payload, process.env.SECRETO);
  }
