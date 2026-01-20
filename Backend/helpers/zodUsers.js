@@ -10,4 +10,3 @@ const usuarioSchema = zod.object({//solo acepta los valores que definimos
 export const validarUsuario = (usuario) => {
     return usuarioSchema.safeParse(usuario);//valida la info
 }
-

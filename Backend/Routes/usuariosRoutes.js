@@ -6,7 +6,7 @@ export const CreadorUsuarios = (modelo) => {
 
     const usuarioRouter = Router();
 
-    usuarioRouter.post("/", controlador.register);  
+    usuarioRouter.post("/", controlador.register);
 
     usuarioRouter.post("/login", controlador.login);
 

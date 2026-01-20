@@ -9,7 +9,7 @@ const articuloRouter = Router();
 
 articuloRouter.get('/', controlador.getAll)
 
-articuloRouter.get('/:id', controlador.getOneBiID)
+articuloRouter.get('/:id', controlador.getOneByID)
 
 articuloRouter.delete('/:id', controlador.delete)
 

@@ -10,11 +10,12 @@ export class UsuarioController{
     register = async(request, response) =>{
         const usuario = validarUsuario(request.body);
 
+        const nuevoUsuario = await this.modelo.register(usuario);
+
         if(nuevoUsuario ==  Error){
             return response.status(400).json('Error de validacion');
         }
 
-        const nuevoUsuario = await this.modelo.register(usuario);   
 
         response.json(nuevoUsuario);
     }

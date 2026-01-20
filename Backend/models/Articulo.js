@@ -7,7 +7,7 @@ export class Articulo{
         return articulosDevolver;
     }
 
-    static getOneBiID(id){
+    static getOneByID(id){
         return articulosDevolver.find(articulo => articulo.id == id);
     }
 
@@ -26,7 +26,7 @@ export class Articulo{
         }
 
         articulosDevolver = [...articulosDevolver,nuevoArticulo];
-        
+
         return nuevoArticulo;
     }
 

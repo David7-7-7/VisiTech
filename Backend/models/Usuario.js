@@ -14,7 +14,7 @@ export class Usuario{
         const nuevoUsuario ={
             ...usuario.data
         }
-        
+
         if(usuariosDevolver.find(usuario => usuario.nick === nuevoUsuario.nick) || 
         usuariosDevolver.find(usuario => usuario.mail === nuevoUsuario.mail))
         {
@@ -50,6 +50,6 @@ export class Usuario{
 
         return usuarioFormateado;
     }
-    
+
 
 }
