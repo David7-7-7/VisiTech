@@ -27,9 +27,7 @@ export class UsuarioModel{
             return Error;
         }
 
-        const nuevoUsuario = {
-            ...usuario.data
-        }
+        const nuevoUsuario = {...usuario.data}
 
         const usuarioExiste = await Usuario.findOne({$or: [{nick: nuevoUsuario.nick},{mail: nuevoUsuario.mail}]});//que si encuentra una cosa u otra
 

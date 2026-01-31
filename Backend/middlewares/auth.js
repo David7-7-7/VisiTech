@@ -6,7 +6,7 @@ export const auth = (request,response, next) => {
     const tokenRecibido = request.headers.authorization ;
 
     if(!tokenRecibido)
-        return response.status(403).json("Error de autenticacion 3 "+ tokenRecibido);
+        return response.status(403).json("Error de autenticacion "+ tokenRecibido);
 
     const token = tokenRecibido.replace(/['"]+/g,''); //Reemplazamos los caracteres por caracteres vacios
 

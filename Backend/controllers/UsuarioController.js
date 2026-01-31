@@ -13,7 +13,7 @@ export class UsuarioController{
         const nuevoUsuario = await this.modelo.register(usuario);
 
         if(nuevoUsuario ==  Error){
-            return response.status(400).json('Error de validacion');
+            return response.status(400).json('Error de validacion ');
         }
 
 
