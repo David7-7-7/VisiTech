@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import {NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom' 
 
 export const Registro = () => {
   const [formulario, setFormulario] = useState({});
   const [exito, setExito] = useState(false);
 
-  const recogerForm = () =>{
+  const recogerForm = (e) =>{
     e.preventDefault();
 
     let usuario=
@@ -31,7 +31,7 @@ export const Registro = () => {
                     }
                 });
 
-            const datos = peticion-json();
+            const datos = await peticion.json();
 
             !datos?setExito(false):setExito(true); //Es lo mismo que un IF pero de otra manera escrita
         }

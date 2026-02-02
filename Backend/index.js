@@ -6,6 +6,7 @@ import { ArticuloModel } from "./models/Articulo_MDB.js";
 //import { Usuario } from "./models/Usuario.js";
 import { UsuarioModel } from "./models/Usuario_MDB.js";
 import {auth} from "./middlewares/auth.js";
+import cors from "cors";
 
 const app = express();
 
@@ -13,6 +14,7 @@ const app = express();
 
 // se esta diciendo que se esta trabajando con archivos Json
 app.use(express.json());
+app.use(cors());
 
 //puerto por el que estara escuchando
 const PORT = 1234;
