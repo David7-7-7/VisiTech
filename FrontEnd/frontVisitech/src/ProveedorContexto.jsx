@@ -1,4 +1,4 @@
-import {React, createContext, useEffect, useState} from "react";
+import { React, createContext, useEffect, useState } from "react";
 //manejo del token
 export const AuthContext = createContext();
 
@@ -6,18 +6,23 @@ export const ProveedorContexto = (props) => {
 
     const [usuarioAuth, setUsuarioAuth] = useState(null);
 
-    useEffect(async()=>{
+    const usrStorage = () => {
         const usuario = localStorage.getItem("usuario");
 
-        if(!usuario){
+        if (!usuario) 
             return false;
-        }
+        
 
         setUsuarioAuth(JSON.parse(usuario));
-    },[])
-    
-    return(
-        <AuthContext.Provider value = {[usuarioAuth,setUsuarioAuth]}>
-            {props.children}</AuthContext.Provider>
+    }
+
+    useEffect(() => {
+        usrStorage()
+    }, [])
+
+    return (
+        <AuthContext.Provider value={[usuarioAuth, usrStorage]}>
+            {props.children}
+        </AuthContext.Provider>
     )
 }
